@@ -1,0 +1,15 @@
+@import "_settings";
+
+body {
+    margin: 0;
+    font-family: "Merriweather", serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: $foreground;
+    background: $background;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
