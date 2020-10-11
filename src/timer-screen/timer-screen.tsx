@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./timer-screen.scss";
 import { IntervalListState, Interval } from "../model/intervals";
+import Monospaceify from "../monospace-ify/monospace-ify";
 
 interface TimerScreenProps {
     intervals: Interval[];
@@ -42,6 +43,32 @@ class TimerScreen extends Component<TimerScreenProps, TimerScreenState> {
     render() {
         return (
             <div className="timer-screen">
+                <div className="current">
+                    <p className="description-shadow-mask"></p>
+                    <p className="description">
+                        “{
+                            this.state.intervals[this.state.currentTimer.id - 1]
+                                .description
+                        }”
+                    </p>
+                    <div className="left">
+                        <Monospaceify
+                            value={Math.floor(
+                                this.state.currentTimer.left / 60
+                            ).toString()}
+                        />
+                        <p className="colon">:</p>
+                        <Monospaceify
+                            value={
+                                (this.state.currentTimer.left % 60 < 10
+                                    ? "0"
+                                    : "") +
+                                (this.state.currentTimer.left % 60).toString()
+                            }
+                        />
+                        <p className="remaining">remaining</p>
+                    </div>
+                </div>
                 <div className="outline">
                     {this.state.intervals.map((interval) => (
                         <div key={interval.id} className="interval">
@@ -51,18 +78,11 @@ class TimerScreen extends Component<TimerScreenProps, TimerScreenState> {
                             </p>
                             {interval.description ? (
                                 <p className="description">
-                                    {interval.description}
+                                    “{interval.description}”
                                 </p>
                             ) : null}
                         </div>
                     ))}
-                </div>
-
-                <div className="current">
-                    {Math.floor(this.state.currentTimer.left / 60)}:
-                    {this.state.currentTimer.left % 60 < 10 ? "0" : ""}
-                    {this.state.currentTimer.left % 60}{" "}
-                    <span className="unit">left</span>
                 </div>
             </div>
         );

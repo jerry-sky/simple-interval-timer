@@ -14,7 +14,7 @@
 }
 
 span.unit {
-    font-size: 50%;
+    font-size: 70%;
     color: $secondary-foreground;
 }
 
@@ -22,13 +22,14 @@ span.unit {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: calc(10px + 1vmin);
+    opacity: 0.8;
 
     .interval {
         margin-left: 10px;
         &:first-child {
             margin-left: 0;
         }
-        font-size: calc(15px + 2vmin);
 
         .value {
             margin-bottom: 10px;
@@ -36,11 +37,60 @@ span.unit {
 
         .description {
             margin-top: 0;
-            font-size: calc(8px + .8vmin);
+            font-size: 65%;
         }
     }
 }
 
 .current {
+    font-size: 36px;
 
+    $description-shadow-height: 40px;
+    // cut off the top part of the shadow
+    .description-shadow-mask {
+        background: $secondary-background;
+        height: $description-shadow-height;
+        position: relative;
+        z-index: 11;
+        margin: 0;
+        margin-bottom: $description-shadow-height;
+    }
+
+    .description {
+        position: relative;
+        font-size: 150%;
+        margin: 15px 0;
+        margin-top: -$description-shadow-height;
+        padding-bottom: 7px;
+        box-shadow: $background 0 0 $description-shadow-height;
+    }
+
+    .left {
+        .monospaceified {
+            $letter-width: 19px;
+            display: flex;
+            flex-flow: row;
+            width: $letter-width * 2;
+            display: inline-block;
+            p.letter {
+                width: $letter-width;
+                display: inline-block;
+                margin: 0;
+            }
+        }
+
+        p.colon {
+            width: 10px;
+            padding: 0 2px;
+            display: inline-block;
+            margin: 0;
+        }
+
+        .remaining {
+            color: $secondary-foreground;
+            font-size: 40%;
+            margin: 0;
+            margin-top: 5px;
+        }
+    }
 }
