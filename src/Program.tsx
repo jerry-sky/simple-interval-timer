@@ -3,18 +3,15 @@ import "./Program.scss";
 import Form from "./EditIntervals";
 
 class Program extends Component<{}> {
-
     private submitIntervalForm() {
-        console.log('I’m going outside');
+        console.log("I’m going outside");
     }
 
     render() {
         return (
             <div className="program">
-                <div className="header">
-                    <p>Interval Timer</p>
-                    <Form submitFunction={this.submitIntervalForm} />
-                </div>
+                <p className="header">Interval Timer</p>
+                <Form submitFunction={this.submitIntervalForm} />
             </div>
         );
     }
