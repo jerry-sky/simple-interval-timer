@@ -1,9 +1,9 @@
 import React, { Component, ChangeEvent, FormEvent } from "react";
 import "./intervals-form.scss";
-import { Interval, IntervalListState } from "../model/intervals";
+import { IntervalListState, IntervalList } from "../model/intervals";
 
 interface IntervalsFormProps {
-    submitFunction: () => any;
+    submitFunction: (intervals: IntervalList) => any;
 }
 
 class IntervalsForm extends Component<IntervalsFormProps, IntervalListState> {
@@ -30,7 +30,7 @@ class IntervalsForm extends Component<IntervalsFormProps, IntervalListState> {
 
         this.submitForm = (event: any) => {
             event.preventDefault();
-            props.submitFunction();
+            props.submitFunction(this.state.intervals);
         };
     }
 
