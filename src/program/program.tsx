@@ -27,9 +27,11 @@ class Program extends Component<{}, ProgramState> {
             <div className="program">
                 <p className="header">Interval Timer</p>
                 <Form submitFunction={this.SubmitIntervalForm.bind(this)} />
-                {this.state.showTimerScreen ? (
-                    <TimerScreen intervals={this.state.intervals} />
-                ) : null}
+                <div className={this.state.showTimerScreen ? "show" : "hide"}>
+                    {this.state.showTimerScreen ? (
+                        <TimerScreen intervals={this.state.intervals} />
+                    ) : null}
+                </div>
             </div>
         );
     }
