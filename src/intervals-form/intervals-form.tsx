@@ -4,6 +4,7 @@ import { IntervalListState, IntervalList, Interval } from "../model/intervals";
 
 interface IntervalsFormProps {
     submitFunction: (intervals: IntervalList) => any;
+    initialIntervals: IntervalList;
 }
 
 class IntervalsForm extends Component<IntervalsFormProps, IntervalListState> {
@@ -90,7 +91,11 @@ class IntervalsForm extends Component<IntervalsFormProps, IntervalListState> {
                             type="text"
                             value={interval.description}
                             onChange={(event) =>
-                                this.handleChange(event, interval.id, 'description')
+                                this.handleChange(
+                                    event,
+                                    interval.id,
+                                    "description"
+                                )
                             }
                         />
                     </div>

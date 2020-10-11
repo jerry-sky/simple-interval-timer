@@ -41,6 +41,7 @@ button {
     background: transparent;
     border: 0;
     // border-radius: 0;
+    outline: 0;
     font-size: calc(10px + 1.5vmin);
     padding: 12px 27px;
     transition: .08s linear background;
@@ -48,5 +49,9 @@ button {
     &:hover {
         background: $secondary-background;
         box-shadow: $secondary-background 0 0 30px;
+        &.secondary-background {
+            background: $background;
+            box-shadow: $background 0 0 30px;
+        }
     }
 }
