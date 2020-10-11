@@ -17,7 +17,7 @@ code {
         monospace;
 }
 
-input.number {
+input {
     // background: $secondary-background;
     background: transparent;
     color: $foreground;
@@ -26,16 +26,27 @@ input.number {
     padding: 10px 14px;
     border-radius: 0;
     min-width: 0;
-    width: 100px;
+    width: 125px;
     text-align: center;
     outline: none;
+
+    &.text {
+        width: 150px;
+        font-size: calc(7px + 1.75vmin)
+    }
 }
 
 button {
     // background: $secondary-background;
     background: transparent;
     border: 0;
-    border-radius: 0;
+    // border-radius: 0;
     font-size: calc(10px + 1.5vmin);
-    padding: 6px 15px;
+    padding: 12px 27px;
+    transition: .08s linear background;
+
+    &:hover {
+        background: $secondary-background;
+        box-shadow: $secondary-background 0 0 30px;
+    }
 }

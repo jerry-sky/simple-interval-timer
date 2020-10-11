@@ -1,6 +1,6 @@
 import React, { Component, ChangeEvent, FormEvent } from "react";
 import "./intervals-form.scss";
-import { IntervalListState, IntervalList } from "../model/intervals";
+import { IntervalListState, IntervalList, Interval } from "../model/intervals";
 
 interface IntervalsFormProps {
     submitFunction: (intervals: IntervalList) => any;
@@ -36,15 +36,29 @@ class IntervalsForm extends Component<IntervalsFormProps, IntervalListState> {
 
     private submitForm: (event: FormEvent<HTMLFormElement>) => any;
 
-    handleChange(event: ChangeEvent<HTMLInputElement>, id: number) {
-        const value = parseInt(event.target.value) || 0;
+    handleChange(
+        event: ChangeEvent<HTMLInputElement>,
+        id: number,
+        attribute: "description" | "interval" = "interval"
+    ) {
+        const value = event.target.value;
+        let obj: Interval;
+        if (attribute === "interval") {
+            obj = {
+                ...this.state.intervals[id - 1],
+                interval: parseInt(value) || 0,
+            };
+        } else {
+            obj = {
+                ...this.state.intervals[id - 1],
+                description: value,
+            };
+        }
+
         this.setState({
             intervals: [
                 ...this.state.intervals.slice(0, id - 1),
-                {
-                    ...this.state.intervals[id - 1],
-                    interval: value,
-                },
+                obj,
                 ...this.state.intervals.slice(id),
             ],
         });
@@ -60,17 +74,26 @@ class IntervalsForm extends Component<IntervalsFormProps, IntervalListState> {
             let first = true;
             for (const interval of this.state.intervals) {
                 output.push(
-                    <input
-                        autoFocus={first}
-                        className="number"
-                        key={interval.id}
-                        type="text"
-                        value={interval.interval || ""}
-                        placeholder="0"
-                        onChange={(event) =>
-                            this.handleChange(event, interval.id)
-                        }
-                    />
+                    <div className="interval" key={interval.id}>
+                        <input
+                            autoFocus={first}
+                            className="number"
+                            type="text"
+                            value={interval.interval || ""}
+                            placeholder="0"
+                            onChange={(event) =>
+                                this.handleChange(event, interval.id)
+                            }
+                        />
+                        <input
+                            className="text description"
+                            type="text"
+                            value={interval.description}
+                            onChange={(event) =>
+                                this.handleChange(event, interval.id, 'description')
+                            }
+                        />
+                    </div>
                 );
                 first = false;
             }
