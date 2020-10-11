@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./Program.scss";
-import Form from "./EditIntervals";
+import "./program.scss";
+import Form from "./intervals-form";
 
 class Program extends Component<{}> {
     private submitIntervalForm() {

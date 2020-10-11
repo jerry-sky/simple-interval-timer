@@ -1,5 +1,5 @@
 import React, { Component, ChangeEvent, FormEvent } from "react";
-import "./EditIntervals.scss";
+import "./intervals-form.scss";
 
 /**
  * The object that defines one interval in the program.
@@ -25,12 +25,12 @@ interface IntervalListState {
     intervals: Interval[];
 }
 
-export interface EditIntervalsProps {
+export interface IntervalsFormProps {
     submitFunction: () => any;
 }
 
-class EditIntervals extends Component<EditIntervalsProps, IntervalListState> {
-    constructor(props: EditIntervalsProps) {
+class IntervalsForm extends Component<IntervalsFormProps, IntervalListState> {
+    constructor(props: IntervalsFormProps) {
         super(props);
 
         // define some default interval values
@@ -109,4 +109,4 @@ class EditIntervals extends Component<EditIntervalsProps, IntervalListState> {
     }
 }
 
-export default EditIntervals;
+export default IntervalsForm;
