@@ -25,7 +25,7 @@ interface IntervalListState {
     intervals: Interval[];
 }
 
-export interface IntervalsFormProps {
+interface IntervalsFormProps {
     submitFunction: () => any;
 }
 
