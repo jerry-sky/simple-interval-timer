@@ -2,14 +2,40 @@
 
 body {
     margin: 0;
+    background: $background;
+}
+
+* {
     font-family: "Merriweather", serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: $foreground;
-    background: $background;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
+}
+
+input.number {
+    // background: $secondary-background;
+    background: transparent;
+    color: $foreground;
+    border: none;
+    font-size: calc(20px + 5vmin);
+    padding: 10px 14px;
+    border-radius: 0;
+    min-width: 0;
+    width: 100px;
+    text-align: center;
+    outline: none;
+}
+
+button {
+    // background: $secondary-background;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    font-size: calc(12px + 2vmin);
+    padding: 6px 15px;
 }

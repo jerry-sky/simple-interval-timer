@@ -1,8 +1,8 @@
 $foreground: #CFDDFF;
 $background: #282C34;
+$secondary-background: #35374A;
 $theme-colour: #4949E6;
 
-$border-colour: #6B6B6B;
 
 @mixin lil-shadow {
     box-shadow: 0 0 2px $foreground;
